@@ -1,16 +1,20 @@
-function formatDates(strings) {
-    return strings.map(str => {
-        let date = new Date(str);
-        if (!isNaN(date.getTime())) {
-            let day = String(date.getDate()).padStart(2, '0');
-            let month = String(date.getMonth() + 1).padStart(2, '0');
-            let year = date.getFullYear();
-            return `${day}/${month}/${year}`;
-        }
-        return null;
-    }).filter(date => date !== null);
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const squaredNumbers = numbers.map(num => num ** 2);
+
+const evenNumbers = squaredNumbers.filter(num => num % 2 === 0);
+
+console.log("Mảng số nguyên ban đầu:", numbers);
+console.log("Mảng sau khi bình phương:", squaredNumbers);
+console.log("Các số chẵn sau khi bình phương:", evenNumbers);
+
+function formatDates(dateArray) {
+    return dateArray.map(date => {
+        const [year, month, day] = date.split('-');
+        return `${day}/${month}/${year}`;
+    });
 }
 
-let inputArray = ["2024-03-12", "2023-07-25", "invalid-date", "2022-01-01"];
-let formattedDates = formatDates(inputArray);
-console.log(formattedDates);
+const dateList = ["2025-03-13", "2024-12-01", "2023-07-20"];
+const formattedDates = formatDates(dateList);
+console.log("Danh sách ngày được định dạng:", formattedDates);
